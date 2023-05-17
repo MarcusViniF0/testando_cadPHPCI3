@@ -30,24 +30,23 @@ class Cad extends CI_Controller {
 		$this->load->view('tuitar');
 		$this->load->view('rodape');
 	}
-	public function salvar(){
-		$this->load->model('User_model');
-		$msg = $_POST["mensagem"];
-		$email = $_POST["mensagem"];
-		$data_nascimento = $_POST["mensagem"];
-		$faculdade = $_POST["mensagem"];
-		$semestre = $_POST["mensagem"];
-		$presenca = $_POST["mensagem"];
-		$atividades_hoje = $_POST["mensagem"];
-		
-
-		$this->User_model->msg=$msg;
-		$this->User_model->email=$email;
-		$this->User_model->data_nascimento=$data_nascimento;
-		$this->User_model->faculdade=$faculdade;
-		$this->User_model->presenca=$presenca;
-		$this->User_model->atividades_hoje=$atividades_hoje;
-		
-		$this->User_model->inserir();
+	public function formulario(){
+		$this->load->view('Pagina_principal');
+	}
+	public function novo(){
+		$usuario=array(
+			"msg"=>$this->input->post("msg"),
+			"datahora"=>$this->input->post("datahora"),
+			"email"=>$this->input->post("email"),
+			"data_nascimento"=>$this->input->post("data_nascimento"),
+			"faculdade"=>$this->input->post("faculdade"),
+			"semestre"=>$this->input->post("semestre"),
+			"presenca"=>$this->input->post("presenca"),
+			"atividades_hoje"=>$this->input->post("atividades_hoje"),
+		);
+		$this->load->model("User_model");
+		$this->User_model->salvar($usuario);
+		$this->session->set-flashdata("success","Produto cadastrado com sucesso!");
+		redirect('/');
 	}
 }

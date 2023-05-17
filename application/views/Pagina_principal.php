@@ -14,7 +14,7 @@
     <br>
     <img src="<?= base_url();?>application/assets/imagens/download.png"/>
     <br><br>
-    <form method="post" action="<?=base_url();?>Cad/salvar">
+    <form method="post" action="<?=base_url();?>Cad/novo">
         <textarea name="mensagem"></textarea><br>
                 <br>
                 <div class="inputBox">
